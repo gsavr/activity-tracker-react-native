@@ -1,11 +1,26 @@
 # ACTIVITY TRACKER
 
-**Preview**
+## Preview
 
-![](movie-search.gif)
+![preview 1](/client/assets/demo-1.gif.gif)
+![preview 2](/client/assets/demo-2.gif.gif)
+![preview 3](/client/assets/demo-3.gif.gif)
 
-**Technologies Used**
+## To run:
 
-**Front-End**
+- From client: 'npx expo start'
+- From server: 'npm run dev
 
-**Back-End**
+## Technologies Used
+
+### Front-End
+
+- React Native
+- react-navigation
+- axios
+
+### Back-End
+
+- Node.js
+- Express
+- MongoDB
