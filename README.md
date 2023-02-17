@@ -2,9 +2,9 @@
 
 ## Preview
 
-![preview 1](/client/assets/demo-1.gif)
-![preview 2](/client/assets/demo-2.gif)
-![preview 3](/client/assets/demo-3.gif)
+![preview 1](/client/assets/demo--1.gif)
+![preview 2](/client/assets/demo--2.gif)
+![preview 3](/client/assets/demo--3.gif)
 
 ## To run:
 
