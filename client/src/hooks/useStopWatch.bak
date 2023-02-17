@@ -1,0 +1,24 @@
+import { useState } from "react";
+
+export const useStopWatch = () => {
+  const [isTimerActive, setIsTimerActive] = useState(false);
+  const [isTimerPaused, setIsTimerPaused] = useState(true);
+
+  const handleTimerStart = () => {
+    if (!isTimerActive) {
+      setIsTimerActive(true);
+      setIsTimerPaused(false);
+    } else {
+      setIsTimerPaused(!isTimerPaused);
+    }
+    return { isTimerActive, isTimerPaused };
+  };
+
+  const handleTimerReset = () => {
+    setIsTimerActive(false);
+    setTime(0);
+    return isTimerActive;
+  };
+
+  return [handleTimerStart, handleTimerReset, isTimerActive, isTimerPaused];
+};

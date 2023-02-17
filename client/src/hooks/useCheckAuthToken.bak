@@ -1,0 +1,21 @@
+import { useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+export const useCheckAuthToken = () => {
+  const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
+      const authToken = await AsyncStorage.getItem("token");
+      setToken(authToken);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+    }
+    fetchData();
+  }, [token]);
+
+  return { token, loading, setToken };
+};

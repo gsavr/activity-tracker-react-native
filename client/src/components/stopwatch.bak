@@ -1,0 +1,75 @@
+import { Button, Text } from "@rneui/themed";
+import { useState, useEffect } from "react";
+import { StyleSheet, View } from "react-native";
+
+export const StopWatch = () => {
+  const [isTimerActive, setIsTimerActive] = useState(false);
+  const [isTimerPaused, setIsTimerPaused] = useState(true);
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    let interval = null;
+
+    if (isTimerActive && isTimerPaused === false) {
+      interval = setInterval(() => {
+        setTime((time) => time + 10);
+      }, 10);
+    } else {
+      clearInterval(interval);
+    }
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isTimerActive, isTimerPaused]);
+
+  const handleTimerStart = () => {
+    if (!isTimerActive) {
+      setIsTimerActive(true);
+      setIsTimerPaused(false);
+    } else {
+      setIsTimerPaused(!isTimerPaused);
+    }
+  };
+
+  const handlePauseResume = () => {
+    setIsTimerPaused(!isTimerPaused);
+  };
+
+  const handleTimerReset = () => {
+    setIsTimerActive(false);
+    setTime(0);
+  };
+
+  return (
+    <View style={styles.timer}>
+      <Text style={styles.digits}>
+        {("0" + Math.floor((time / 60000) % 60)).slice(-2)}:
+      </Text>
+      <Text style={styles.digits}>
+        {("0" + Math.floor((time / 1000) % 60)).slice(-2)}.
+      </Text>
+      <Text style={styles.milisec}>
+        {("0" + ((time / 10) % 100)).slice(-2)}
+      </Text>
+      <Button title="start" onPress={handleTimerStart} />
+      <Button title="reset" onPress={handleTimerReset} />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  timer: {
+    margin: 15,
+    flexDirection: "row",
+    height: 60,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  digits: {
+    fontSize: 55,
+  },
+  milisec: {
+    fontSize: 55,
+    color: "#e42a2a",
+  },
+});
