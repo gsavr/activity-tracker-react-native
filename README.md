@@ -8,8 +8,8 @@
 
 ## To run:
 
-- From client: 'npx expo start'
-- From server: 'npm run dev'
+- From client: `npx expo start`
+- From server: `npm run dev`
 
 ## Technologies Used
 
